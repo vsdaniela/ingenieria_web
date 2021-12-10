@@ -11,7 +11,7 @@
         <p> DNI PROPIETARIO: {{$cp['dni_propietario']}}</p>
         <p> NOMBRES Y APELLIDOS: {{$cp['nombres_prop']}}</p>
         <p> DOMICILIO: {{$cp['direccion_prop']}}</p>
-        <p> TELEFONO : {{$cp['telefono_prop']}}</p>
+        <p> TELEFONO : {{$cp['telefono_propietario']}}</p>
     </body>
   
 </html>

@@ -31,7 +31,7 @@
             echo '<br>';    
           @endphp
             <div class="col-sm-2">
-              <a href='{{route("especialidades.action")}}' class="btn btn-primary m-1">Añadir especialidad</a>
+              <button id="openModal" data-action='{{route("especialidades.store")}}' class="btn btn-primary m-1">Añadir especialidad</button>
             </div>
             <div class="table-responsive">
               {{ csrf_field() }}

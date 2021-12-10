@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Animales;
+use App\Propietarios;
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller
@@ -27,7 +28,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        $propietarios = \App\Propietarios::all(array('dni_propietario','nombres_prop','direccion_prop','telefono_prop'));
+        $propietarios = \App\Propietarios::all(array('dni_propietario','nombres_prop','direccion_prop','telefono_propietario'));
         return view('animals.animal-add',compact('propietarios'));
     }
 

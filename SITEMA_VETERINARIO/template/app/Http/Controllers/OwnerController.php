@@ -46,13 +46,13 @@ class OwnerController extends Controller
             'dni_propietario' => 'required',
             'nombres_prop' => 'required',
             'direccion_prop' => 'required',
-            'telefono_prop' => 'required'
+            'telefono_propietario' => 'required'
         ]);
         DB::table('propietarios')->insert([
             'dni_propietario' => $store_data['dni_propietario'],
             'nombres_prop' => $store_data['nombres_prop'],
             'direccion_prop' => $store_data['direccion_prop'],
-            'telefono_prop' => $store_data['telefono_prop']
+            'telefono_propietario' => $store_data['telefono_propietario']
         ]);
         $cuerpo=$request->all();
         //$out->writeln(gettype($store_data));

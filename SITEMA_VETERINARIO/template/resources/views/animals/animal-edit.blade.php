@@ -8,10 +8,10 @@
     <div class="col-md-12 grid-margin">
       <div class="card">
         <div class="p-4 border-bottom bg-light">
-          <h4 class="card-title mb-0">Editar Propietario</h4>
+          <h4 class="card-title mb-0">Editar Animal</h4>
         </div>
         <div class="card-body">
-        <form action="{{ route('pet-owners.update', $propietario->dni_propietario) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('animals.update', $animal->idAnimal) }}" method="post" enctype="multipart/form-data">
             <input name="_method" type="hidden" value="PUT">
             <div class="mb-3 row">
             <label for="input" class="col-sm-2 col-form-label">DNI Propietario</label>

@@ -38,10 +38,9 @@
                     <td>{{$animal->dni_propietario}}</td>
                     <td>
                         <div class="d-flex">
-                            <form action="{{ route('animals.DELETE',$animal->idAnimal) }}" method="post">
-                              {{ method_field('PUT') }}
+                            <form action="{{ route('animals.destroy',$animal->idAnimal) }}" method="post">
+                              {{ method_field('put') }}
                                 <a class="btn btn-warning" href="{{ route('animals.edit',$animal->idAnimal) }}" role="button">Editar</a>
-
                                 <button type="submit" class="btn btn-danger m-1">Eliminar</button>
                             </form>
                         </div>

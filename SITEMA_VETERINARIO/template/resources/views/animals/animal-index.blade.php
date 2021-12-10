@@ -8,35 +8,40 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">PROPIETARIOS</h4>
+          <h4 class="card-title">ANIMALES</h4>
           @php
             echo date('l jS \of F Y h:i:s A');
             echo '<br>';    
             @endphp
-          <a href="{{ route('pet-owners.create')}}" class="btn btn-primary m-1" >Añadir propietario</a>
+          <a href="{{ route('animals.create')}}" class="btn btn-primary m-1" >Añadir animal</a>
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th>DNI</th>
+                  <th>ID Animal</th>
+                  <th>Especie</th>
                   <th>Nombres</th>
-                  <th>Direccion</th>
-                  <th>Telefono</th>
+                  <th>Fecha nacimiento</th>
+                  <th>Caracteristicas</th>
+                  <th>Propietario</th>
                   <th colspan="3">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($propietarios as $propietario)
+                @foreach($animales as $animal)
                 <tr>
-                    <td>{{$propietario->dni_propietario}}</td>
-                    <td>{{$propietario->nombres_prop}}</td>
-                    <td>{{$propietario->direccion_prop}}</td>
-                    <td>{{$propietario->telefono_prop}}</td>
+                    <td>{{$animal->idAnimal}}</td>
+                    <td>{{$animal->especie_animal}}</td>
+                    <td>{{$animal->nombre_animal}}</td>
+                    <td>{{$animal->fecha_nac_animal}}</td>
+                    <td>{{$animal->caracteristicas_animal}}</td>
+                    <td>{{$animal->dni_propietario}}</td>
                     <td>
                         <div class="d-flex">
-                            <form action="{{ route('pet-owners.destroy',$propietario->dni_propietario) }}" method="post">
-                                <a class="btn btn-warning" href="{{ route('pet-owners.edit',$propietario->dni_propietario) }}" role="button">Editar</a>
-                                {{ method_field('delete') }}
+                            <form action="{{ route('animals.DELETE',$animal->idAnimal) }}" method="post">
+                              {{ method_field('PUT') }}
+                                <a class="btn btn-warning" href="{{ route('animals.edit',$animal->idAnimal) }}" role="button">Editar</a>
+
                                 <button type="submit" class="btn btn-danger m-1">Eliminar</button>
                             </form>
                         </div>

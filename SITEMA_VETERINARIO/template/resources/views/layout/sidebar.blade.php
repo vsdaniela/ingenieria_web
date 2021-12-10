@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item {{ active_class(['charts/chartjs']) }}">
-      <a class="nav-link" href="{{ url('/charts/chartjs') }}">
+      <a class="nav-link" href="{{ url('/animals') }}">
         <i class="menu-icon mdi mdi-owl"></i>
         <span class="menu-title">Animalitos</span>
       </a>
@@ -53,6 +53,12 @@
       <a class="nav-link" href="{{ url('/pet-owners') }}">
         <i class="menu-icon mdi mdi-human-handsup"></i>
         <span class="menu-title">Propietarios</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ url('/especialidades') }}">
+        <i class="menu-icon mdi mdi-human-handsup"></i>
+        <span class="menu-title">Especialidades</span>
       </a>
     </li>
     <li class="nav-item {{ active_class(['user-pages/*']) }}">
@@ -72,6 +78,9 @@
           <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
             <a class="nav-link" href="{{ url('/user-pages/lock-screen') }}">Lock Screen</a>
           </li>
+            <form action="/logout" method="post">
+              <a class="nav-link" href="#" onclick="this.closest('form').submit()">Cerrar Sesion</a>
+            </form>
         </ul>
       </div>
     </li>

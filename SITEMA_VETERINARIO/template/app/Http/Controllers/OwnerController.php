@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Propietarios; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Propietarios; 
+use App\Mail\MessageRecieved;
+use Illuminate\Support\Facades\Mail;
+
 class OwnerController extends Controller
 {
     /**
@@ -52,7 +54,11 @@ class OwnerController extends Controller
             'direccion_prop' => $store_data['direccion_prop'],
             'telefono_prop' => $store_data['telefono_prop']
         ]);
+        $cuerpo=$request->all();
         //$out->writeln(gettype($store_data));
+        $correito = auth()->user()->email;
+        $out->writeln($correito);
+        Mail::to($correito)->send(new MessageRecieved($cuerpo));
         return redirect('pet-owners')->with('success','Creado');
     }
 
@@ -87,15 +93,12 @@ class OwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Propietarios $propietario)
+    public function update(Request $request,$dni_propietario)
     {
-        DB::table('propietarios')->where('dni_propietario', (string)$propietario->dni_propietario)
-       ->update([
-           'nombres_prop' => (string)$request['nombres_prop'],
-           'direccion_prop' => (string)$request['direccion_prop'],
-           'telefono_prop' => (string)$request['telefono_prop'],
-        ]);
-        //$prop->update($request->all());
+        $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln($dni_propietario);
+        $faq = $request->except(['_token', '_method' ]);
+        Propietarios::where('dni_propietario','=',$dni_propietario)->update($faq);
         return redirect('pet-owners');
     }
 

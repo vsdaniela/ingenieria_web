@@ -23,7 +23,10 @@ Route::resource('animals','AnimalController');
 Route::post('animals-delete/{idAnimal}','AnimalController@destroy')->name('animals.DELETE');
 
 //rutas para crud de ajax
-Route::get('especialidades', 'EspecialidadController@index');
+Route::get('/especialidades/create','EspecialidadController@create')->name('especialidades.create');
+Route::post('/especialidades','EspecialidadController@store')->name('especialidades.store');
+
+Route::post('especialidades', 'EspecialidadController@index');
 Route::post('especialiades/tabledit/', 'EspecialidadController@action')->name('especialidades.action');
 //rutas para subida de archivos
 Route::get('/upload-file', 'FileUpload@createForm');

@@ -61,6 +61,12 @@
         <span class="menu-title">Especialidades</span>
       </a>
     </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ url('/upload-file') }}">
+        <i class="menu-icon mdi mdi-human-handsup"></i>
+        <span class="menu-title">Archivos</span>
+      </a>
+    </li>
     <li class="nav-item {{ active_class(['user-pages/*']) }}">
       <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
         <i class="menu-icon mdi mdi-lock-outline"></i>

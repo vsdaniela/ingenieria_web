@@ -26,6 +26,13 @@
             <h3 class="panel-title">Especialidades</h3>
           </div>
           <div class="panel-body">
+            @php
+            echo date('l jS \of F Y h:i:s A');
+            echo '<br>';    
+          @endphp
+            <div class="col-sm-2">
+              <a href='{{route("especialidades.action")}}' class="btn btn-primary m-1">Añadir especialidad</a>
+            </div>
             <div class="table-responsive">
               {{ csrf_field() }}
               <table id="editable" class="table table-bordered table-striped">

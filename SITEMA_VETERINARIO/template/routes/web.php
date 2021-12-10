@@ -15,16 +15,19 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware('auth');;
 Auth::routes();
+
 // Route::get('/','DashboardController@index');
 Route::resource('pet-owners','OwnerController');
 //Route::post('pet-owners-delete/{dni_propietario}','OwnerController@destroy')->name('pet-owners.DELETE');
 Route::resource('animals','AnimalController');
 Route::post('animals-delete/{idAnimal}','AnimalController@destroy')->name('animals.DELETE');
 
-
+//rutas para crud de ajax
 Route::get('especialidades', 'EspecialidadController@index');
 Route::post('especialiades/tabledit/', 'EspecialidadController@action')->name('especialidades.action');
-
+//rutas para subida de archivos
+Route::get('/upload-file', 'FileUpload@createForm');
+Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 Route::get('notifications', function () {
     return view('pages.notifications.index');
 });
@@ -53,3 +56,4 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error-pages.error-404');
 })->where('page','.*');
+

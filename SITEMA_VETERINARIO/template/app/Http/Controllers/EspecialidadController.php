@@ -8,7 +8,7 @@ class EspecialidadController extends Controller
 {
     function index()
     {
-    	$data = DB::table('especialidad')->get();
+    	$data = DB::table('especialidades')->get();
     	return view('especialidades.ajax-index', compact('data'));
     }
     function action(Request $request)
@@ -22,14 +22,14 @@ class EspecialidadController extends Controller
     			$data = array(
     				'nombre_Especialidadcol'=>$request->nombre_Especialidadcol,
     			);
-    			DB::table('especialidad')
+    			DB::table('especialidades')
     				->where('idEspecialidad', $request->idEspecialidad)
     				->update($data);
     		}
     		if($request->action == 'delete')
     		{
                 $out->writeln($request->idEspecialidad);
-                $x=DB::table('especialidad')->where('idEspecialidad', '=', $request->idEspecialidad)->delete();
+                $x=DB::table('especialidades')->where('idEspecialidad', '=', $request->idEspecialidad)->delete();
                 $out->writeln($x);
     			//DB::table('especialidad')->where('idEspecialidad', $request->idEspecialidad)->delete();
                 

@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use DB;
 class EspecialidadController extends Controller
 {
-    function index()
+    public function index()
     {
+		$out = new \Symfony\Component\Console\Output\ConsoleOutput();
+           
     	$data = DB::table('especialidades')->get();
+		//$out->writeln($data);
     	return view('especialidades.ajax-index', compact('data'));
     }
     function action(Request $request)
@@ -16,11 +19,11 @@ class EspecialidadController extends Controller
     	if($request->ajax())
     	{
             $out = new \Symfony\Component\Console\Output\ConsoleOutput();
-            $out->writeln($request->action);
+            //$out->writeln($request->action);
             if($request->action == 'edit')
     		{
     			$data = array(
-    				'nombre_Especialidadcol'=>$request->nombre_Especialidadcol,
+    				'nombre_especialidad'=>$request->nombre_especialidad,
     			);
     			DB::table('especialidades')
     				->where('idEspecialidad', $request->idEspecialidad)
@@ -28,9 +31,10 @@ class EspecialidadController extends Controller
     		}
     		if($request->action == 'delete')
     		{
-                $out->writeln($request->idEspecialidad);
-                $x=DB::table('especialidades')->where('idEspecialidad', '=', $request->idEspecialidad)->delete();
-                $out->writeln($x);
+                //$out->writeln($request->idEspecialidad);
+                DB::table('especialidades')
+				->where('idEspecialidad', '=', $request->idEspecialidad)
+				->delete();
     			//DB::table('especialidad')->where('idEspecialidad', $request->idEspecialidad)->delete();
                 
     		}

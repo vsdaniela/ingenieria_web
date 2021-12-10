@@ -1,65 +1,83 @@
-
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>SISTEMA VET</title>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>            
-      <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
-      <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
-
-      <!-- plugin css -->
-      {!! Html::style('assets/plugins/@mdi/font/css/materialdesignicons.min.css') !!}
-      {!! Html::style('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') !!}
-    </head>
-    <body data-base-url="{{url('/')}}">
-      
-      <div class="container">
-        <br>
-        <br />
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Especialidades</h3>
-          </div>
-          <div class="panel-body">
-            @php
-            echo date('l jS \of F Y h:i:s A');
-            echo '<br>';    
-          @endphp
-            <div class="col-sm-2">
-              <button id="openModal" data-action='{{route("especialidades.store")}}' class="btn btn-primary m-1">Añadir especialidad</button>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Table Edit Delete Mysql Data using Tabledit Plugin in Laravel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>            
+    <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
+  </head>
+  <style type="text/css">
+  	div#links{
+  		float:left;
+  	}
+  	div#menu{
+  		float:right;
+  	}
+    div#menu2{
+  		float:left;
+  	}
+  	div#credits{
+  		clear:both;
+  	}
+  </style>
+<body>
+  <div class="container">
+    <div class="panel-body">
+      <h4 class="title mb-0">ESPECIALIDADES</h4>
+          <div class="card">
+            <div class="card-body">
+              @php
+                echo date('l jS \of F Y h:i:s A');
+                echo '<br>';    
+              @endphp
+              <hr>
+              <div id="menu" >
+                <div class="card text-black" style="max-width: 30rem;">
+                        <div class="card-body">
+                                <form method="post" action="" >
+                                      <div class="form-group">
+                                        <label for="nombre_esp">Nombre Especialidad</label>
+                                        <input type="text" class="form-control text-justify" id="nombre_esp"></div>
+                                        <button type="submit" class="btn btn-primary">
+                                          Añadir
+                                        </button>
+                                      </div>
+                                </form>                                    
+                      </div>
+                  </div>
+                </div>
+                <div class="card" style="width: 80rem;" >
+                    <div class="card-body">
+                            <div class="table-responsive" >
+                                {{ csrf_field() }}
+                                <table id="editable" class="table table-bordered table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Id</th>
+                                      <th>Nombre de Especialidad</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($data as $row)
+                                    <tr>
+                                      <td>{{ $row->idEspecialidad }}</td>
+                                      <td>{{ $row->nombre_especialidad}}</td>
+                                    </tr>
+                                    @endforeach
+                                  </tbody>
+                                </table>
+                            </div>
+                      </div>
+              </div>
             </div>
-            <div class="table-responsive">
-              {{ csrf_field() }}
-              <table id="editable" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nombre de Especialidad</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($data as $row)
-                  <tr>
-                    <td>{{ $row->idEspecialidad }}</td>
-                    <td>{{ $row->nombre_Especialidadcol}}</td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
-      </div>
-    </body>
-  </html>
+  </div>
+</body>
+</html>
 
-  
 <script>
+
     $(document).ready(function(){
        
       $.ajaxSetup({
@@ -70,12 +88,11 @@
     
       $('#editable').Tabledit({
         
-        url:'{{route("especialidades.action")}}',
+        url:'{{route("tabledit.action")}}',
         dataType:"json",
-        type: 'POST',
         columns:{
           identifier:[0, 'idEspecialidad'],
-          editable:[[1, 'nombre_Especialidadcol']]
+          editable:[[1, 'nombre_especialidad']]
         },
         restoreButton:false,
         onSuccess:function(data, textStatus, jqXHR)
@@ -83,7 +100,7 @@
           if(data.action == 'delete')
           {
             console.log("delete table");
-            $('#'+data.id).remove();
+            $('#'+data.idEspecialidad).remove();
           }
         }
       });

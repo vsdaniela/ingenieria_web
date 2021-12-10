@@ -56,7 +56,7 @@
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="{{ url('/especialidades') }}">
+      <a class="nav-link" href="{{ url('/especialidades/tabledit') }}">
         <i class="menu-icon mdi mdi-human-handsup"></i>
         <span class="menu-title">Especialidades</span>
       </a>

@@ -14,9 +14,9 @@
         <form action="{{ route('animals.update', $animal->idAnimal) }}" method="post" enctype="multipart/form-data">
             <input name="_method" type="hidden" value="PUT">
             <div class="mb-3 row">
-            <label for="input" class="col-sm-2 col-form-label">DNI Propietario</label>
+            <label for="input" class="col-sm-2 col-form-label">Especie Animal</label>
             <div class="col-sm-10">
-                <input type="text" name= "dni_propietario" value="{{ $propietario->dni_propietario }}" class="form-control">
+                <input type="text" name= "nombre_animal" value="{{ $animal->nombre_animal }}" class="form-control">
             </div>
             </div>
             <div class="mb-3 row">
@@ -24,7 +24,7 @@
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='nombres_prop'>
-                            <input type='text' name= "nombres_prop" value ="{{ $propietario->nombres_prop}}" class="form-control"/>
+                            <input type='text' name= "nombre_animal" value ="{{ $animal->nombre_animal}}" class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -33,15 +33,15 @@
                 </div>
             </div>
             <div class="mb-3 row">
-            <label for="inputdesc" class="col-sm-2 col-form-label">Direccion</label>
+            <label for="inputdesc" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
             <div class="col-sm-10">
-                <input type="text" name= "direccion_prop" value="{{ $propietario->direccion_prop}}" class="form-control" id="direccion_prop">
+                <input type="text" name= "fecha_nac_animal" value="{{ $animal->fecha_nac_animal}}" class="form-control" id="fecha_nac_animal">
             </div>
             </div>
             <div class="mb-3 row">
-                <label for="inputdesc" class="col-sm-2 col-form-label">Telefono</label>
+                <label for="inputdesc" class="col-sm-2 col-form-label">DNI Propietario</label>
                 <div class="col-sm-10">
-                <input type="text" name= "telefono_prop" value="{{ $propietario->telefono_prop }}" class="form-control" id="telefono_prop">
+                <input type="text" name= "dni_propietario" value="{{ $animal->dni_propietario}}" class="form-control" id="dni_propietario">
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>

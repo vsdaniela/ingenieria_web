@@ -36,7 +36,7 @@
                 <div class="mb-3 row">
                     <label for="inputdesc" class="col-sm-2 col-form-label">Teléfono</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="telefono_propietario" id="telefono_prop">
+                        <input type="text" class="form-control" name="telefono_propietario" id="telefono_propietario">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Guardar</button>

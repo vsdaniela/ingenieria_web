@@ -20,14 +20,17 @@ Auth::routes();
 Route::resource('pet-owners','OwnerController');
 //Route::post('pet-owners-delete/{dni_propietario}','OwnerController@destroy')->name('pet-owners.DELETE');
 Route::resource('animals','AnimalController');
-Route::post('animals-delete/{idAnimal}','AnimalController@destroy')->name('animals.DELETE');
+//Route::post('animals-delete/{idAnimal}','AnimalController@destroy')->name('animals.DELETE');
 
 //rutas para crud de ajax
-Route::get('/especialidades/create','EspecialidadController@create')->name('especialidades.create');
-Route::post('/especialidades','EspecialidadController@store')->name('especialidades.store');
 
-Route::post('especialidades', 'EspecialidadController@index');
-Route::post('especialiades/tabledit/', 'EspecialidadController@action')->name('especialidades.action');
+Route::get('especialidades/tabledit', 'EspecialidadController@index');
+
+Route::post('especialidades/tabledit/action', 'EspecialidadController@action')->name('tabledit.action');
+
+Route::get('/especialidades/tabledit/create','EspecialidadController@create')->name('especialidades.create');
+//Route::post('/especialidades','EspecialidadController@store')->name('especialidades.store');
+
 //rutas para subida de archivos
 Route::get('/upload-file', 'FileUpload@createForm');
 Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');

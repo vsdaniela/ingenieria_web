@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">ANIMALES</h4>
-          @php
+            @php
             echo date('l jS \of F Y h:i:s A');
             echo '<br>';    
             @endphp
@@ -39,8 +39,10 @@
                     <td>
                         <div class="d-flex">
                             <form action="{{ route('animals.destroy',$animal->idAnimal) }}" method="post">
-                              {{ method_field('put') }}
+
+                                
                                 <a class="btn btn-warning" href="{{ route('animals.edit',$animal->idAnimal) }}" role="button">Editar</a>
+                                {{ method_field('delete') }}
                                 <button type="submit" class="btn btn-danger m-1">Eliminar</button>
                             </form>
                         </div>

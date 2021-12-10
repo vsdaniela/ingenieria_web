@@ -41,7 +41,7 @@
             <div class="mb-3 row">
                 <label for="inputdesc" class="col-sm-2 col-form-label">Telefono</label>
                 <div class="col-sm-10">
-                <input type="text" name= "telefono_prop" value="{{ $propietario->telefono_prop }}" class="form-control" id="telefono_prop">
+                <input type="text" name= "telefono_propietario" value="{{ $propietario->telefono_propietario }}" class="form-control" id="telefono_propietario">
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
